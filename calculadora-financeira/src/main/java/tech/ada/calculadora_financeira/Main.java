@@ -1,14 +1,50 @@
 package tech.ada.calculadora_financeira;
 
+import java.math.BigDecimal;
 import java.nio.file.FileAlreadyExistsException;
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.util.*;
+
+import tech.ada.calculadora_financeira.aplicacao.Aplicacao;
+import tech.ada.calculadora_financeira.aplicacao.dto.DespesaDto;
+import tech.ada.calculadora_financeira.dominio.despesa.TipoDespesa;
+import tech.ada.calculadora_financeira.entradas.Consola;
+import tech.ada.calculadora_financeira.entradas.Entrada;
+import tech.ada.calculadora_financeira.entradas.Ficheiro;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String... args) {
+
+        UUID id = UUID.randomUUID();
+        UUID id2 = UUID.fromString(id.toString());
+        LocalDate now = LocalDate.now();
+        DespesaDto d1 = new DespesaDto(id, new BigDecimal(1), TipoDespesa.ELETRICIDADE, now);
+        DespesaDto d2 = new DespesaDto(id2, new BigDecimal(1), TipoDespesa.ELETRICIDADE, now);
+
+        String a = "a";
+        String a2 = "a";
+        if (a == a2){
+            System.out.println("==");
+        }
+        if (a.equals(a2)) {
+            System.out.println("equals");
+        }
+        if (a.equalsIgnoreCase(a2)) {
+            System.out.println("equalIgnoreCase");
+        }
+
+        if(d1.equals(d2)) {
+            System.out.println("são iguais");
+        }
+
+        if (d1 != null) {
+            return;
+        }
+
+        Scanner s = new Scanner(System.in);
+        final Entrada c = new Ficheiro();
+        //final Aplicacao app = new Aplicacao(c);
 
         final Scanner scanner = new Scanner(System.in);
         // final double[] valoresDespesa = new double[3];
