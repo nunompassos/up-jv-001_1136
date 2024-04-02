@@ -1,11 +1,23 @@
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
+
+import tech.ada.exemplos.poo2.Contador;
+import tech.ada.exemplos.poo2.ContadorPar;
+import tech.ada.exemplos.poo2.ContadorSimples;
+import tech.ada.exemplos.poo2.ContadorTriplo;
+
 
 public class Main {
     public static void main(String[] args) {
 
+        if (new Random().nextBoolean()) {
+            contar(new ContadorSimples("Contador Simples"));
+        } else if(new Random().nextBoolean()) {
+            contar(new ContadorPar("Contador Par"));
+        } else {
+            contar(new ContadorTriplo("Contador Triplo"));
+        }
+
+/*
         int[] array = {1, 2, 3};
         List<Integer> list = new ArrayList<>();
         list.add(1);
@@ -24,7 +36,7 @@ public class Main {
             }
         }
         System.out.println(list);
-
+*/
         /*double a = 2d;
         double b = 3d;
 
@@ -41,5 +53,13 @@ public class Main {
 
     public static double soma(double a, double b) {
         return a + b;
+    }
+
+    public static void contar(Contador c) {
+        int i = new Random().nextInt(100);
+        for(int j = 0; j < i; j++) {
+            c.incrementar();
+        }
+        System.out.println(c.toString());
     }
 }
